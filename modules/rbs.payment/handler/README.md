@@ -49,4 +49,4 @@ PROPERTY подтягиваются из товаров заказа"
         $arFields = $dbElement->GetFields();
         $arBasketItemsInfo[$arFields["ID"]] = $arFields;
  }
-``
+```
