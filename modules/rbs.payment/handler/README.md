@@ -27,3 +27,26 @@
      // ),
   )
 ```
+
+PROPERTY подтягиваются из товаров заказа"
+
+```php
+ $basketItemsIds = Array();
+ $arBasketItemsInfo = Array();
+ foreach ($basketItems as $key => $BasketItem) {
+     $basketItemsIds[$key] = $BasketItem->getProductId();
+ }
+
+ if(count($basketItemsIds > 0)) {
+     $arraySize = count($basketItemsIds);
+     $arSort   = Array('DATE_CREATE' => 'DESC');
+     $arFilter = Array("ID" => $basketItemsIds, "ACTIVE"=>"Y");
+     $navParams = Array("nPageSize"=>$arraySize);
+     $arSelect = Array("ID", "IBLOCK_ID", "NAME", "DATE_ACTIVE_FROM", "PROPERTY_KOMITENT", "PROPERTY_TELEFON_KOMITENTA", "PROPERTY_INN_KOMITENTA");
+     $dbFields = \CIBlockElement::GetList($arSort, $arFilter, false, $navParams, $arSelect);
+     while($dbElement = $dbFields->GetNextElement())
+     {
+        $arFields = $dbElement->GetFields();
+        $arBasketItemsInfo[$arFields["ID"]] = $arFields;
+ }
+``
