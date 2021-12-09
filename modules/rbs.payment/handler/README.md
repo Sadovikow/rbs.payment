@@ -1,1 +1,1 @@
-sd
+Корректировки обернуты в /* SADOVIKOW correction */
